@@ -6,8 +6,8 @@ metadata:
     app: {{ include "chart.name" . }}
 spec:
   accessModes:
-    - {{ .Values.postgresql.primary.persistence.accessModes[0] }}
+    - "{{ .Values.postgresql.primary.persistence.accessModes | first | default "ReadWriteOnce" }}"
   resources:
     requests:
-      storage: {{ .Values.postgresql.primary.persistence.size }}
-  storageClassName: {{ .Values.postgresql.primary.persistence.storageClass | default "standard" }}
+      storage: "{{ .Values.postgresql.primary.persistence.size | default "10Gi" }}"
+  storageClassName: "{{ .Values.postgresql.primary.persistence.storageClass | default "standard" }}"
