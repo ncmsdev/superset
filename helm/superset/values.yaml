@@ -798,12 +798,12 @@ init:
 # ref: https://github.com/bitnami/charts/tree/main/bitnami/postgresql
 # @default -- see `values.yaml`
 postgresql:
-  postgresqlPassword: superset
+  postgresqlPassword: superset  # Replace with a secure password
   enabled: true
 
   auth:
     username: superset
-    password: Numocity@123
+    password: Numocity@123  # Replace with a secure password
     database: superset
 
   image:
@@ -812,15 +812,13 @@ postgresql:
   primary:
     persistence:
       enabled: true
-      storageClass: managed-csi
+      storageClass: managed-csi  # Replace with your storage class
       accessModes:
         - ReadWriteOnce
       size: 1Gi
-    ## PostgreSQL port
     service:
       ports:
         postgresql: "5432"
-
 # -- Configuration values for the Redis dependency.
 # ref: https://github.com/bitnami/charts/blob/master/bitnami/redis
 # More documentation can be found here: https://artifacthub.io/packages/helm/bitnami/redis
