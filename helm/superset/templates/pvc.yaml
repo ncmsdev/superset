@@ -3,12 +3,14 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-pvc
   labels:
-    app: superset  # Replace with your desired app label
+    app: {{ template "superset.chart" . }}
     release: {{ .Release.Name }}
 spec:
+  {{- if .Values.primary.persistence.enabled }}
   accessModes:
     - {{ .Values.primary.persistence.accessModes | default "ReadWriteOnce" | first }}
   resources:
     requests:
-      storage: {{ .Values.primary.persistence.size }}
-  storageClassName: {{ .Values.primary.persistence.storageClass }}
+      storage: {{ .Values.primary.persistence.size | default "1Gi" }}
+  storageClassName: {{ .Values.primary.persistence.storageClass | default "managed-csi" }}
+  {{- end }}
