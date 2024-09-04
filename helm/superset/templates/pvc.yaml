@@ -3,11 +3,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: {{ .Release.Name }}-postgresql-pvc
   labels:
-    app: {{ include "chart.name" . }}
+    app: {{ template "superset.name" . }}
+    release: {{ .Release.Name }}
 spec:
   accessModes:
-    - "{{ .Values.postgresql.primary.persistence.accessModes | first | default "ReadWriteOnce" }}"
+    - {{ .Values.postgresql.primary.persistence.accessModes | first | default "ReadWriteOnce" }}
   resources:
     requests:
-      storage: "{{ .Values.postgresql.primary.persistence.size | default "10Gi" }}"
-  storageClassName: "{{ .Values.postgresql.primary.persistence.storageClass | default "standard" }}"
+      storage: {{ .Values.postgresql.primary.persistence.size | default "10Gi" }}
+  storageClassName: {{ .Values.postgresql.primary.persistence.storageClass | default "standard" }}
