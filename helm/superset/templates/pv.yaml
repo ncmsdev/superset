@@ -14,6 +14,6 @@ spec:
   storageClassName: {{ .Values.primary.persistence.storageClass }}
   csi:
     driver: disk.csi.azure.com
-    volumeHandle: /subscriptions/92795555-74c0-409e-bf60-edb488699fb3/resourceGroups/MC_Numocity-Dev002-Central-India_dev-k8s_centralindia/providers/Microsoft.Compute/disks/pv-postgres-dev
+    volumeHandle: /subscriptions/92795555-74c0-409e-bf60-edb488699fb3/resourceGroups/MC_Numocity-Dev002-Central-India_dev-k8s_centralindia/providers/Microsoft.Compute/disks/superset-postgretsql
     volumeAttributes:
       fsType: ext4
