@@ -738,7 +738,7 @@ init:
     firstname: Superset
     lastname: Admin
     email: admin@superset.com
-    password: admin
+    password: Numocity@123
   # -- List of initContainers
   # @default -- a container waiting for postgres
   initContainers:
@@ -798,47 +798,28 @@ init:
 # ref: https://github.com/bitnami/charts/tree/main/bitnami/postgresql
 # @default -- see `values.yaml`
 postgresql:
-  postgresqlPassword: superset
-  ##
-  ## Use the PostgreSQL chart dependency.
-  ## Set to false if bringing your own PostgreSQL.
+  postgresqlPassword: superset  # Replace with a secure password
   enabled: true
 
-  ## Authentication parameters
   auth:
-    ## The name of an existing secret that contains the postgres password.
-    existingSecret:
-    ## PostgreSQL name for a custom user to create
     username: superset
-    ## PostgreSQL password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
-    password: superset
-    ## PostgreSQL name for a custom database to create
+    password: Numocity@123  # Replace with a secure password
     database: superset
 
   image:
     tag: "14.6.0-debian-11-r13"
 
-  ## PostgreSQL Primary parameters
   primary:
-    ##
-    ## Persistent Volume Storage configuration.
-    ## ref: https://kubernetes.io/docs/user-guide/persistent-volumes
     persistence:
-      ##
-      ## Enable PostgreSQL persistence using Persistent Volume Claims.
       enabled: true
-      ##
-      ## Persistent class
-      # storageClass: classname
-      ##
-      ## Access modes:
+      storageClass: managed-csi  # Replace with your storage class
       accessModes:
         - ReadWriteOnce
-    ## PostgreSQL port
-    service:
+      size: 1Gi
+    service:helm template .
+    
       ports:
         postgresql: "5432"
-
 # -- Configuration values for the Redis dependency.
 # ref: https://github.com/bitnami/charts/blob/master/bitnami/redis
 # More documentation can be found here: https://artifacthub.io/packages/helm/bitnami/redis
