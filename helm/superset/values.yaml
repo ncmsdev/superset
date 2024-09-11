@@ -218,7 +218,7 @@ service:
 
 ingress:
   enabled: true
-  ingressClassName: webapprouting.kubernetes.azure.com 
+  ingressClassName: kong
   annotations:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "300"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
