@@ -103,7 +103,7 @@ extraSecretEnv: {}
   #  SUPERSET_SECRET_KEY: 'CHANGE_ME_TO_A_COMPLEX_RANDOM_SECRET'
 
 # -- Extra files to mount on `/app/pythonpath`
-extraConfigs: {}
+# extraConfigs: {}
   # import_datasources.yaml: |
   #     databases:
   #     - allow_file_upload: true
@@ -142,6 +142,7 @@ configOverrides:
   my_override: |
     PREVIOUS_SECRET_KEY = 'thisISaSECRET_1234'
     SECRET_KEY = 'Numocity@123'
+    WTF_CSRF_ENABLED = False
 init:
   command:
     - /bin/sh
