@@ -140,8 +140,6 @@ extraVolumeMounts: []
 # Files can be passed as helm --set-file configOverrides.my-override=my-file.py
 configOverrides: 
   my_override: |
-    PREVIOUS_SECRET_KEY = 'thisISaSECRET_1234'
-    SECRET_KEY = 'Numocity@123'
     WTF_CSRF_ENABLED = False
 init:
   command:
